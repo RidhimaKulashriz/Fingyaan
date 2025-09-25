@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fingyaan — Budget Dashboard</title>
+  <meta name="theme-color" content="#EFF5D2" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/images/logo-32.png" sizes="32x32" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/images/logo-192.png" />
+  <link rel="manifest" href="site.webmanifest" />
+</head>
+<body>
+  <header class="site-header minimal">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" onerror="this.src='assets/images/favicon.svg'" alt="Fingyaan logo" style="height:24px;vertical-align:middle;margin-right:.4rem"></a>
+      <div class="site-title">Fingyaan</div>
+      <nav class="nav">
+        <ul>
+          <li><a href="invest.html">Invest</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><button id="themeToggle" class="btn ghost">🌓</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section" id="appBudget">
+    <section class="work-grid reveal" aria-label="Quick apps">
+      <a href="budget.html" class="work-card" aria-label="Open Budget">
+        <div class="work-media img" style="background-image:url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop');"><span>Budget</span></div>
+        <div class="work-meta"><h3>Budget</h3></div>
+      </a>
+      <a href="invest.html" class="work-card" aria-label="Open Invest">
+        <div class="work-media img" style="background-image:url('https://images.unsplash.com/photo-1559526323-cb2f2fe2591e?q=80&w=1200&auto=format&fit=crop');"><span>Invest</span></div>
+        <div class="work-meta"><h3>Invest</h3></div>
+      </a>
+      <a href="learn.html" class="work-card" aria-label="Open Learn">
+        <div class="work-media img" style="background-image:url('https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop');"><span>Learn</span></div>
+        <div class="work-meta"><h3>Learn</h3></div>
+      </a>
+    </section>
+    <h1 class="section-title">Budget Dashboard</h1>
+
+    <section class="card reveal">
+      <h3>Highlights</h3>
+      <div class="article">
+        <div class="article-thumb" style="background-image:url('assets/images/article-1.svg')"></div>
+        <div>
+          <h4>50/30/20 in Practice</h4>
+          <p>See how needs, wants and savings balance over your month.</p>
+        </div>
+      </div>
+      <div class="article">
+        <div class="article-thumb" style="background-image:url('assets/images/article-2.svg')"></div>
+        <div>
+          <h4>Cut 3 Low-Value Costs</h4>
+          <p>Identify 3 small spends to reduce this week and re-route to savings.</p>
+        </div>
+      </div>
+      <div class="article">
+        <div class="article-thumb" style="background-image:url('assets/images/article-3.svg')"></div>
+        <div>
+          <h4>Automate Savings</h4>
+          <p>Set a weekly auto-transfer to build your emergency fund.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid-3">
+      <form id="entryForm" class="card form">
+        <h3>Add Entry</h3>
+        <label>
+          Type
+          <select id="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+            <option value="scholarship">Scholarship</option>
+            <option value="loan">Loan</option>
+          </select>
+        </label>
+        <label>
+          Category
+          <input id="category" placeholder="e.g., Food, Rent, Books" />
+        </label>
+        <label>
+          Amount (₹)
+          <input id="amount" type="number" min="0" step="0.01" required />
+        </label>
+        <label>
+          Note
+          <input id="note" placeholder="optional" />
+        </label>
+        <button class="btn primary" type="submit">Add</button>
+      </form>
+
+      <section class="card">
+        <h3>Goals</h3>
+        <label>
+          Period
+          <select id="goalPeriod">
+            <option value="monthly">Monthly</option>
+            <option value="weekly">Weekly</option>
+          </select>
+        </label>
+        <label>
+          Savings Goal (₹)
+          <input id="goalAmount" type="number" min="0" step="0.01" />
+        </label>
+        <div class="progress" aria-label="Savings progress">
+          <div id="progressBar" class="progress-bar" style="width:0%"></div>
+        </div>
+        <div class="stats">
+          <div><strong>Income:</strong> <span id="sumIncome">₹0</span></div>
+          <div><strong>Expense:</strong> <span id="sumExpense">₹0</span></div>
+          <div><strong>Savings:</strong> <span id="sumSavings">₹0</span></div>
+        </div>
+        <div class="actions">
+          <button id="exportCsv" class="btn">Export CSV</button>
+          <button id="clearBudget" class="btn danger">Reset Data</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Breakdown</h3>
+        <canvas id="chart" width="360" height="240" aria-label="Expense Pie Chart"></canvas>
+        <ul id="categoryList" class="pill-list" aria-live="polite"></ul>
+      </section>
+    </div>
+
+    <section class="card full">
+      <h3>Entries</h3>
+      <table class="table" aria-describedby="entries">
+        <thead>
+          <tr><th>Date</th><th>Type</th><th>Category</th><th>Amount</th><th>Note</th><th></th></tr>
+        </thead>
+        <tbody id="entries"></tbody>
+      </table>
+    </section>
+
+    <aside class="smart-tips card">
+      <h3>Smart Tips</h3>
+      <ul id="tips"></ul>
+    </aside>
+  </main>
+
+  <footer class="site-footer tiny"><a href="index.html">← Back to Home</a></footer>
+
+  <button class="ai-fab" aria-label="Open AI Assistant">🤖 Ask AI</button>
+  <dialog id="aiModal" class="ai-modal">
+    <form method="dialog" class="ai-ui">
+      <h3>Fingyaan AI Assistant</h3>
+      <div data-ai-out class="pill" style="background:transparent;border:1px solid rgba(255,255,255,.15)">Ask something to get started…</div>
+      <div class="row">
+        <input placeholder="e.g., Suggest ways to save on food" aria-label="Ask AI"/>
+        <button type="button" class="btn primary" data-send>Send</button>
+      </div>
+      <menu style="display:flex;justify-content:flex-end;gap:.5rem">
+        <button class="btn" data-close>Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js" defer></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/budget.js"></script>
+</body>
+</html>

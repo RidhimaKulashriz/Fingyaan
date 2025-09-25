@@ -1,0 +1,21 @@
+[build]
+  publish = "."
+  command = ""
+
+[dev]
+  command = ""
+  port = 8080
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200

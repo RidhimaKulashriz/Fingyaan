@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fingyaan — Admin / Insights</title>
+  <meta name="theme-color" content="#EFF5D2" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/images/logo-32.png" sizes="32x32" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/images/logo-192.png" />
+  <link rel="manifest" href="site.webmanifest" />
+</head>
+<body>
+  <header class="site-header minimal">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" onerror="this.src='assets/images/favicon.svg'" alt="Fingyaan logo" style="height:24px;vertical-align:middle;margin-right:.4rem"></a>
+      <div class="site-title">Fingyaan</div>
+      <nav class="nav"><ul>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="invest.html">Invest</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul></nav>
+    </div>
+  </header>
+
+  <main class="container section" id="appAdmin">
+    <section class="work-grid reveal" aria-label="Quick apps">
+      <a href="budget.html" class="work-card" aria-label="Open Budget">
+        <div class="work-media img" style="background-image:url('assets/images/ai-budget.svg'), url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop');"><span>Budget</span></div>
+        <div class="work-meta"><h3>Budget</h3></div>
+      </a>
+      <a href="invest.html" class="work-card" aria-label="Open Invest">
+        <div class="work-media img" style="background-image:url('assets/images/ai-invest.svg'), url('https://images.unsplash.com/photo-1559526323-cb2f2fe2591e?q=80&w=1200&auto=format&fit=crop');"><span>Invest</span></div>
+        <div class="work-meta"><h3>Invest</h3></div>
+      </a>
+      <a href="learn.html" class="work-card" aria-label="Open Learn">
+        <div class="work-media img" style="background-image:url('assets/images/ai-learn.svg'), url('https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop');"><span>Learn</span></div>
+        <div class="work-meta"><h3>Learn</h3></div>
+      </a>
+    </section>
+    <h1 class="section-title">Anonymous Insights</h1>
+    <section class="grid-2">
+      <div class="card">
+        <h3>Average Savings Goal</h3>
+        <canvas id="avgGoal" width="420" height="200"></canvas>
+      </div>
+      <div class="card">
+        <h3>Expense Categories Popularity</h3>
+        <canvas id="catBars" width="420" height="200"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer tiny"><a href="index.html">← Back to Home</a></footer>
+
+  <button class="ai-fab" aria-label="Open AI Assistant">🤖 Ask AI</button>
+  <dialog id="aiModal" class="ai-modal">
+    <form method="dialog" class="ai-ui">
+      <h3>Fingyaan AI Assistant</h3>
+      <div data-ai-out class="pill" style="background:transparent;border:1px solid rgba(255,255,255,.15)">Ask something to get started…</div>
+      <div class="row">
+        <input placeholder="e.g., What insights can I derive?" aria-label="Ask AI"/>
+        <button type="button" class="btn primary" data-send>Send</button>
+      </div>
+      <menu style="display:flex;justify-content:flex-end;gap:.5rem">
+        <button class="btn" data-close>Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js" defer></script>
+  <script src="assets/js/common.js"></script>
+  <script>
+    // Simple charts from local data (single-user for demo)
+    const dpr = window.devicePixelRatio || 1;
+    const avgCtx = document.getElementById('avgGoal').getContext('2d');
+    const catCtx = document.getElementById('catBars').getContext('2d');
+
+    function drawAvg() {
+      const goal = Number(localStorage.getItem('fg_goalAmount')||0);
+      const savings = Number(localStorage.getItem('fg_sumSavings')||0);
+      const max = Math.max(goal, savings, 1000);
+      avgCtx.clearRect(0,0,420,200);
+      // axes
+      avgCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--ink');
+      avgCtx.fillRect(40,180,340,2);
+      // bars
+      const bw = 100; const base=180;
+      avgCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent-2');
+      avgCtx.fillRect(80, base - (goal/max)*140, bw, (goal/max)*140);
+      avgCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent-3');
+      avgCtx.fillRect(220, base - (savings/max)*140, bw, (savings/max)*140);
+      avgCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--ink');
+      avgCtx.fillText('Goal', 110, 195);
+      avgCtx.fillText('Savings', 240, 195);
+    }
+
+    function drawCats() {
+      const raw = JSON.parse(localStorage.getItem('fg_entries')||'[]');
+      const cats = {};
+      raw.filter(r=>r.type==='expense').forEach(r=>cats[r.category]=(cats[r.category]||0)+Number(r.amount));
+      const keys = Object.keys(cats).slice(0,6);
+      const max = Math.max(...Object.values(cats), 100);
+      catCtx.clearRect(0,0,420,200);
+      keys.forEach((k,i)=>{
+        const h = (cats[k]/max)*140; const x = 30 + i*60; const y=180-h;
+        catCtx.fillStyle = i%2? getComputedStyle(document.documentElement).getPropertyValue('--accent-3') : getComputedStyle(document.documentElement).getPropertyValue('--accent-4');
+        catCtx.fillRect(x,y,40,h);
+        catCtx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--ink');
+        catCtx.fillText(k.slice(0,6), x,195);
+      })
+    }
+
+    drawAvg(); drawCats();
+  </script>
+</body>
+</html>

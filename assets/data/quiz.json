@@ -1,0 +1,10 @@
+[
+  {"q":"What does the 50/30/20 rule recommend for savings?","choices":["10%","20%","30%","50%"],"a":1},
+  {"q":"Compound interest is best described as:","choices":["Interest only on the principal","Interest on principal plus accumulated interest","A fixed monthly fee","Tax on investments"],"a":1},
+  {"q":"Which portfolio is likely to fluctuate the most?","choices":["Low Risk","Balanced","High Growth","Savings Account"],"a":2},
+  {"q":"An emergency fund should cover:","choices":["Vacation costs","1–3 months of essentials","College party budget","New phone"],"a":1},
+  {"q":"Expense Ratio refers to:","choices":["The fund's risk","Annual fee charged by a fund","Government tax","Your savings rate"],"a":1},
+  {"q":"Liquidity means:","choices":["How quickly an asset converts to cash","How much return it gives","How risky it is","How popular it is"],"a":0},
+  {"q":"A SIP is:","choices":["Systematic Investment Plan","Simple Interest Payment","Student Incentive Program","Secure Insurance Plan"],"a":0},
+  {"q":"Best first step to reduce overspending is to:","choices":["Cut internet","Track categories and set caps","Cancel college","Sell books"],"a":1}
+]

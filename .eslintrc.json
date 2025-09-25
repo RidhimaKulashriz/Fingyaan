@@ -1,0 +1,11 @@
+{
+  "env": { "browser": true, "es2022": true, "jest": true },
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": { "ecmaVersion": 2022, "sourceType": "script" },
+  "rules": {
+    "no-unused-vars": ["warn", {"args": "none"}],
+    "no-undef": "error",
+    "no-var": "error",
+    "prefer-const": "warn"
+  }
+}

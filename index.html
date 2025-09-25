@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fingyaan — Learn. Budget. Invest.</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/images/logo-32.png" sizes="32x32" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/images/logo-192.png" />
+  <link rel="manifest" href="site.webmanifest" />
+</head>
+<body>
+  <a class="skip-link" href="#features">Skip to content</a>
+  <header class="site-header" role="banner">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo" aria-label="Fingyaan Home"><img src="assets/images/logo.png" onerror="this.src='assets/images/favicon.svg'" alt="Fingyaan logo" style="height:28px;vertical-align:middle;margin-right:.4rem"></a>
+      <div class="site-title">Fingyaan</div>
+      <nav class="nav" role="navigation" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">☰</button>
+        <ul id="nav-list">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="budget.html">Budget</a></li>
+          <li><a href="invest.html">Invest</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><button id="themeToggle" class="btn ghost" aria-label="Toggle theme">🌓</button></li>
+        </ul>
+      </nav>
+      <div class="site-links">
+        <a href="index.html">Home</a>
+        <a href="budget.html">Budget</a>
+        <a href="invest.html">Invest</a>
+        <a href="learn.html">Learn</a>
+        <a href="profile.html">Profile</a>
+        <a href="admin.html">Admin</a>
+        <a href="app.html">App</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="main">
+    <!-- Studio-like minimal hero with animated canvas background -->
+    <section class="hero hero-studio reveal" aria-label="Hero">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-center">
+        <div>
+          <h1 class="studio-title">Fingyaan</h1>
+          <p class="studio-sub">Finance. Simplicity. Momentum.</p>
+          <div class="studio-ctas">
+            <a class="btn primary" href="budget.html">Start Budgeting</a>
+            <a class="btn" href="#work">See Work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Grid resembling case studies -->
+    <section id="work" class="section container work-grid reveal" aria-label="Quick apps">
+      <a href="budget.html" class="work-card" aria-label="Open Budget">
+        <div class="work-media img" style="background-image:url('assets/images/ai-budget.svg'), url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop');"><span>Budget</span></div>
+        <div class="work-meta"><h3>Budget</h3></div>
+      </a>
+      <a href="invest.html" class="work-card" aria-label="Open Invest">
+        <div class="work-media img" style="background-image:url('assets/images/ai-invest.svg'), url('https://images.unsplash.com/photo-1559526323-cb2f2fe2591e?q=80&w=1200&auto=format&fit=crop');"><span>Invest</span></div>
+        <div class="work-meta"><h3>Invest</h3></div>
+      </a>
+      <a href="learn.html" class="work-card" aria-label="Open Learn">
+        <div class="work-media img" style="background-image:url('assets/images/ai-learn.svg'), url('https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop');"><span>Learn</span></div>
+        <div class="work-meta"><h3>Learn</h3></div>
+      </a>
+    </section>
+
+    <section id="about" class="section alt reveal">
+      <div class="container grid-2">
+        <div>
+          <h2 class="section-title">Why Fingyaan works</h2>
+          <div class="feat-grid">
+            <div class="feat-card">
+              <div class="feat-media">🎓</div>
+              <div class="feat-title">Student-first</div>
+            </div>
+            <div class="feat-card">
+              <div class="feat-media">📈</div>
+              <div class="feat-title">Start small</div>
+            </div>
+            <div class="feat-card">
+              <div class="feat-media">🏆</div>
+              <div class="feat-title">Gamified</div>
+            </div>
+            <div class="feat-card">
+              <div class="feat-media">🛡️</div>
+              <div class="feat-title">Private</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="carousel" aria-roledescription="carousel">
+            <div class="carousel-track" id="testimonialTrack">
+              <article class="slide">
+                <blockquote>“The budget page finally clicked for me. I hit my goal in 2 months.”</blockquote>
+                <p class="author">— Aditi, College Sophomore</p>
+              </article>
+              <article class="slide">
+                <blockquote>“Invest simulator made risk feel real without losing money.”</blockquote>
+                <p class="author">— Rohan, CS Student</p>
+              </article>
+              <article class="slide">
+                <blockquote>“Quizzes + badges = I actually learned terms I used to ignore.”</blockquote>
+                <p class="author">— Meera, Commerce</p>
+              </article>
+            </div>
+            <div class="carousel-controls">
+              <button class="btn ghost" data-dir="-1" aria-label="Previous">‹</button>
+              <button class="btn ghost" data-dir="1" aria-label="Next">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">Start your journey</h2>
+      <div class="cta-banner">
+        <p>Ready to take control? Set a simple savings goal and track your first week.</p>
+        <a class="btn primary" href="budget.html">Open Budget Dashboard</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <strong>Fingyaan</strong>
+        <p class="muted">A free, open learning project for student financial literacy.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="index.html#about">About</a>
+        <a href="learn.html">Articles</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </div>
+    <p class="tiny">Made for learning. No tracking. © <span id="year"></span></p>
+  </footer>
+
+  <button class="ai-fab" aria-label="Open AI Assistant">🤖 Ask AI</button>
+  <dialog id="aiModal" class="ai-modal">
+    <form method="dialog" class="ai-ui">
+      <h3>Fingyaan AI Assistant</h3>
+      <div data-ai-out class="pill" style="background:transparent;border:1px solid rgba(255,255,255,.15)">Ask something to get started…</div>
+      <div class="row">
+        <input placeholder="e.g., Create a weekly savings plan" aria-label="Ask AI"/>
+        <button type="button" class="btn primary" data-send>Send</button>
+      </div>
+      <menu style="display:flex;justify-content:flex-end;gap:.5rem">
+        <button class="btn" data-close>Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <!-- Mobile Dock Navigation -->
+  <nav class="dock" aria-label="Quick Navigation">
+    <a href="index.html" class="active" aria-label="Home">🏠 Home</a>
+    <a href="budget.html" aria-label="Budget">💰 Budget</a>
+    <a href="invest.html" aria-label="Invest">📈 Invest</a>
+    <a href="learn.html" aria-label="Learn">🎓 Learn</a>
+    <a href="profile.html" aria-label="Profile">🙍 Profile</a>
+  </nav>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js" defer></script>
+  <script src="assets/js/hero.js"></script>
+  <script src="assets/js/common.js"></script>
+</body>
+</html>

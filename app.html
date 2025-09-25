@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fingyaan — Mobile App UI</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/images/logo-32.png" sizes="32x32" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/images/logo-192.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#0b2e1f" />
+  <style>
+    /* App-specific green shades */
+    .app{min-height:100dvh;background:linear-gradient(180deg,#0b2e1f,#0f3a25 40%,#125431 100%);color:#e9fff2;display:flex;justify-content:center}
+    .phone{width:min(420px,100%);padding:clamp(.5rem,.8rem,1rem);}
+    .phone .top{
+      padding:1.1rem 1rem 0.8rem;border-radius:20px;background:linear-gradient(180deg,#0e3a27,#0b2f1e);position:sticky;top:0;z-index:2;border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px)}
+    .brand{display:flex;align-items:center;gap:.6rem}
+    .brand img{height:28px}
+    .title{font-size:clamp(1.8rem,6vw,2.4rem);font-weight:900;letter-spacing:.5px}
+    .subtitle{opacity:.85;margin-top:.25rem}
+    .grid{display:grid;gap:.8rem;margin:1rem 0}
+    .card3{background:linear-gradient(180deg,#136a3c99,#0f4e30bb);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:1rem;box-shadow:0 16px 40px rgba(0,0,0,.2)}
+    .card3.alt{background:linear-gradient(180deg,#1b7a49a6,#155a38cc)}
+    .kpi{display:flex;justify-content:space-between;align-items:end}
+    .kpi .num{font-weight:800;font-size:1.4rem}
+    .pillx{display:inline-block;background:#0b2f1e;border:1px solid rgba(255,255,255,.08);padding:.25rem .5rem;border-radius:999px}
+    .actions{display:flex;gap:.5rem;margin-top:.6rem}
+    .actions .btn{flex:1;border-radius:14px}
+    .section-h{margin:.6rem 0 .2rem;font-weight:700}
+    .assistant{position:relative}
+    .assistant .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+    .assistant .bubble{background:linear-gradient(180deg,#0e3a27,#0b2f1e);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.6rem}
+    .assistant .input{display:flex;gap:.5rem;margin-top:.6rem}
+    .assistant input{flex:1;border-radius:14px;border:1px solid rgba(255,255,255,.12);padding:.6rem;background:#0d3323;color:#ecfff5}
+    .fab{position:fixed;right:clamp(.7rem,2vw,1rem);bottom:clamp(.9rem,2vw,1.2rem);background:linear-gradient(135deg,#45c27e,#1f7d4d);color:white;border:none;border-radius:999px;padding:.85rem 1rem;box-shadow:0 16px 40px rgba(22, 140, 98, .45)}
+  </style>
+</head>
+<body class="bg-3d-page">
+  <main class="app" role="main">
+    <div class="phone" aria-label="Fingyaan App Start">
+      <header class="top" aria-label="App Header">
+        <div class="brand">
+          <img src="assets/images/logo.png" onerror="this.src='assets/images/favicon.svg'" alt="Fingyaan logo"/>
+          <div>
+            <div class="title">Fingyaan</div>
+            <div class="subtitle">Fresh. Smart. Eco‑Tech Finance</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="work-grid reveal" aria-label="Quick apps" style="margin-top:.8rem">
+        <a href="budget.html" class="work-card" aria-label="Open Budget">
+          <div class="work-media img" style="background-image:url('assets/images/ai-budget.svg'), url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop');"><span>Budget</span></div>
+          <div class="work-meta"><h3>Budget</h3></div>
+        </a>
+        <a href="invest.html" class="work-card" aria-label="Open Invest">
+          <div class="work-media img" style="background-image:url('assets/images/ai-invest.svg'), url('https://images.unsplash.com/photo-1559526323-cb2f2fe2591e?q=80&w=1200&auto=format&fit=crop');"><span>Invest</span></div>
+          <div class="work-meta"><h3>Invest</h3></div>
+        </a>
+        <a href="learn.html" class="work-card" aria-label="Open Learn">
+          <div class="work-media img" style="background-image:url('assets/images/ai-learn.svg'), url('https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop');"><span>Learn</span></div>
+          <div class="work-meta"><h3>Learn</h3></div>
+        </a>
+      </section>
+
+      <section class="grid" aria-label="Quick KPIs">
+        <div class="card3">
+          <div class="kpi"><span class="pillx">Savings</span><span class="num" id="kpiSavings">₹0</span></div>
+          <div class="actions"><a class="btn primary" href="budget.html">Open Budget</a><a class="btn" href="invest.html">Invest</a></div>
+        </div>
+        <div class="card3 alt">
+          <div class="kpi"><span class="pillx">Risk</span><span class="num" id="kpiRisk">0/10</span></div>
+          <div class="actions"><a class="btn" href="invest.html">Tweak Allocation</a></div>
+        </div>
+      </section>
+
+      <section class="card3 assistant" aria-label="AI Assistant">
+        <div class="head">
+          <strong>Fingyaan AI</strong>
+          <span class="pillx">Online</span>
+        </div>
+        <div class="bubble" id="aiMsg">Hi! I can analyze your last budget and suggest a weekly saving plan.</div>
+        <div class="input">
+          <input id="aiInput" placeholder="Ask: How can I save ₹500 this week?" aria-label="Ask Fingyaan AI"/>
+          <button class="btn primary" id="aiSend">Ask</button>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Learning">
+        <a class="card3" href="learn.html">
+          <div class="section-h">Learn fast</div>
+          <div>Mini-articles, glossary, and a fun quiz to earn badges.</div>
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <button class="fab" aria-label="Chatbot">🤖</button>
+
+  <script src="assets/js/common.js"></script>
+  <script>
+    // Populate KPIs from LocalStorage
+    const sav=Number(localStorage.getItem('fg_sumSavings')||0); document.getElementById('kpiSavings').textContent='₹'+sav.toLocaleString('en-IN');
+    const risk=localStorage.getItem('fg_risk')||'0'; document.getElementById('kpiRisk').textContent=risk+'/10';
+    // Simple AI mock response
+    const input=document.getElementById('aiInput'); const send=document.getElementById('aiSend'); const msg=document.getElementById('aiMsg');
+    function respond(){ const q=(input.value||'').toLowerCase(); if(!q) return; const tip = sav>0? `Based on your savings ₹${sav.toLocaleString('en-IN')}, try auto‑saving ₹${Math.max(100,Math.round(sav*0.05))} this week.`: 'Start with ₹100/day for essentials and track food spend.'; msg.textContent = 'Suggestion: '+ tip; input.value=''; }
+    send.addEventListener('click', respond); input.addEventListener('keydown', (e)=>{ if(e.key==='Enter') respond(); });
+  </script>
+</body>
+</html>

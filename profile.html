@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fingyaan — Profile & Settings</title>
+  <meta name="theme-color" content="#EFF5D2" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/images/logo-32.png" sizes="32x32" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/images/logo-192.png" />
+  <link rel="manifest" href="site.webmanifest" />
+</head>
+<body>
+  <header class="site-header minimal">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" onerror="this.src='assets/images/favicon.svg'" alt="Fingyaan logo" style="height:24px;vertical-align:middle;margin-right:.4rem"></a>
+      <div class="site-title">Fingyaan</div>
+      <nav class="nav"><ul>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="invest.html">Invest</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><button id="themeToggle" class="btn ghost">🌓</button></li>
+      </ul></nav>
+    </div>
+  </header>
+
+  <main class="container section" id="appProfile">
+    <section class="work-grid reveal" aria-label="Quick apps">
+      <a href="budget.html" class="work-card" aria-label="Open Budget">
+        <div class="work-media img" style="background-image:url('assets/images/ai-budget.svg'), url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop');"><span>Budget</span></div>
+        <div class="work-meta"><h3>Budget</h3></div>
+      </a>
+      <a href="invest.html" class="work-card" aria-label="Open Invest">
+        <div class="work-media img" style="background-image:url('assets/images/ai-invest.svg'), url('https://images.unsplash.com/photo-1559526323-cb2f2fe2591e?q=80&w=1200&auto=format&fit=crop');"><span>Invest</span></div>
+        <div class="work-meta"><h3>Invest</h3></div>
+      </a>
+      <a href="learn.html" class="work-card" aria-label="Open Learn">
+        <div class="work-media img" style="background-image:url('assets/images/ai-learn.svg'), url('https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop');"><span>Learn</span></div>
+        <div class="work-meta"><h3>Learn</h3></div>
+      </a>
+    </section>
+    <h1 class="section-title">Profile & Settings</h1>
+
+    <section class="grid-3">
+      <div class="card">
+        <h3>Your Info</h3>
+        <div class="avatar">
+          <img id="avatarPreview" alt="Your avatar" />
+        </div>
+        <label>Name <input id="name" placeholder="Your name" /></label>
+        <label>College <input id="college" placeholder="Your college" /></label>
+        <label>Upload Avatar <input type="file" id="avatar" accept="image/*" /></label>
+        <button id="saveProfile" class="btn primary">Save Profile</button>
+      </div>
+
+      <div class="card">
+        <h3>Your Progress</h3>
+        <ul class="list small">
+          <li>Total Savings: <strong id="pSavings">₹0</strong></li>
+          <li>Last Allocation Risk: <strong id="pRisk">0</strong></li>
+          <li>Quiz Score (best): <strong id="pQuiz">0</strong></li>
+          <li>Badges: <span id="pBadges"></span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Appearance</h3>
+        <p>Toggle light/dark theme. Your choice is saved locally.</p>
+        <button id="themeToggle" class="btn">Toggle Theme</button>
+        <hr/>
+        <button id="resetData" class="btn danger">Reset All Data</button>
+      </div>
+    </section>
+
+    <dialog id="confirmReset">
+      <form method="dialog" class="dialog">
+        <p>Are you sure you want to reset all Fingyaan data on this device?</p>
+        <menu>
+          <button value="cancel" class="btn">Cancel</button>
+          <button id="confirmResetYes" value="default" class="btn danger">Yes, reset</button>
+        </menu>
+      </form>
+    </dialog>
+  </main>
+
+  <footer class="site-footer tiny"><a href="index.html">← Back to Home</a></footer>
+
+  <button class="ai-fab" aria-label="Open AI Assistant">🤖 Ask AI</button>
+  <dialog id="aiModal" class="ai-modal">
+    <form method="dialog" class="ai-ui">
+      <h3>Fingyaan AI Assistant</h3>
+      <div data-ai-out class="pill" style="background:transparent;border:1px solid rgba(255,255,255,.15)">Ask something to get started…</div>
+      <div class="row">
+        <input placeholder="e.g., Summarize my progress" aria-label="Ask AI"/>
+        <button type="button" class="btn primary" data-send>Send</button>
+      </div>
+      <menu style="display:flex;justify-content:flex-end;gap:.5rem">
+        <button class="btn" data-close>Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js" defer></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/profile.js"></script>
+</body>
+</html>

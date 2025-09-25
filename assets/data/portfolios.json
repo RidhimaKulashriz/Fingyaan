@@ -1,0 +1,5 @@
+[
+  {"id":"low","name":"Low Risk","risk":2,"desc":"Debt funds, government securities, savings."},
+  {"id":"balanced","name":"Balanced","risk":5,"desc":"Mix of index funds, bonds, and gold."},
+  {"id":"growth","name":"High Growth","risk":8,"desc":"Equity index funds, small-cap exposure."}
+]

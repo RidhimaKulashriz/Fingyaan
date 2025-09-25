@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fingyaan — Learning Hub</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/images/logo-32.png" sizes="32x32" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/images/logo-192.png" />
+  <link rel="manifest" href="site.webmanifest" />
+</head>
+<body>
+  <header class="site-header minimal">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" onerror="this.src='assets/images/favicon.svg'" alt="Fingyaan logo" style="height:24px;vertical-align:middle;margin-right:.4rem"></a>
+      <div class="site-title">Fingyaan</div>
+      <nav class="nav"><ul>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="invest.html">Invest</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><button id="themeToggle" class="btn ghost">🌓</button></li>
+      </ul></nav>
+    </div>
+  </header>
+
+  <main class="container section" id="appLearn">
+    <section class="work-grid reveal" aria-label="Quick apps">
+      <a href="budget.html" class="work-card" aria-label="Open Budget">
+        <div class="work-media img" style="background-image:url('assets/images/ai-budget.jpg'), url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop');"><span>Budget</span></div>
+        <div class="work-meta"><h3>Budget</h3></div>
+      </a>
+      <a href="invest.html" class="work-card" aria-label="Open Invest">
+        <div class="work-media img" style="background-image:url('assets/images/ai-invest.jpg'), url('https://images.unsplash.com/photo-1559526323-cb2f2fe2591e?q=80&w=1200&auto=format&fit=crop');"><span>Invest</span></div>
+        <div class="work-meta"><h3>Invest</h3></div>
+      </a>
+      <a href="learn.html" class="work-card" aria-label="Open Learn">
+        <div class="work-media img" style="background-image:url('assets/images/ai-learn.jpg'), url('https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop');"><span>Learn</span></div>
+        <div class="work-meta"><h3>Learn</h3></div>
+      </a>
+    </section>
+    <h1 class="section-title">Learning Hub</h1>
+
+    <section class="grid-2">
+      <article class="card">
+        <h3>Articles</h3>
+        <div class="article">
+          <div class="article-thumb" style="background-image:url('assets/images/article-1.svg')"></div>
+          <div>
+            <h4>50/30/20 Budget Rule</h4>
+            <p>The 50/30/20 rule suggests splitting your income into needs (50%), wants (30%), and savings (20%). Adjust as a student with scholarships and irregular income.</p>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-thumb" style="background-image:url('assets/images/article-2.svg')"></div>
+          <div>
+            <h4>What is Compound Interest?</h4>
+            <p>Compound interest is interest on interest. The earlier you begin, the more your money snowballs over time.</p>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-thumb" style="background-image:url('assets/images/article-3.svg')"></div>
+          <div>
+            <h4>Emergency Fund Basics</h4>
+            <p>Save 1–3 months of essential expenses. Keep it liquid and safe.</p>
+          </div>
+        </div>
+      </article>
+
+      <aside class="card">
+        <h3>Glossary</h3>
+        <ul class="list small">
+          <li><strong>NAV</strong> — Net Asset Value of a fund.</li>
+          <li><strong>Expense Ratio</strong> — Annual fee charged by a fund.</li>
+          <li><strong>Risk</strong> — Likelihood your investment fluctuates.</li>
+          <li><strong>Liquidity</strong> — How fast an asset converts to cash.</li>
+        </ul>
+        <div class="video-embed">
+          <video width="100%" controls>
+            <source src="assets/images/placeholder.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </aside>
+    </section>
+
+    <section class="card full">
+      <h3>Quiz</h3>
+      <div id="quiz" class="quiz">
+        <div id="quizHeader" class="quiz-header">
+          <span>Time: <strong id="timer">00:30</strong></span>
+          <span>Score: <strong id="score">0</strong></span>
+        </div>
+        <div id="question" class="question">Press Start to begin!</div>
+        <div id="choices" class="choices"></div>
+        <div class="quiz-actions">
+          <button id="startQuiz" class="btn primary">Start</button>
+          <button id="next" class="btn" disabled>Next</button>
+        </div>
+        <div id="badges" class="badges"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer tiny"><a href="index.html">← Back to Home</a></footer>
+
+  <button class="ai-fab" aria-label="Open AI Assistant">🤖 Ask AI</button>
+  <dialog id="aiModal" class="ai-modal">
+    <form method="dialog" class="ai-ui">
+      <h3>Fingyaan AI Assistant</h3>
+      <div data-ai-out class="pill" style="background:transparent;border:1px solid rgba(255,255,255,.15)">Ask something to get started…</div>
+      <div class="row">
+        <input placeholder="e.g., Explain compound interest" aria-label="Ask AI"/>
+        <button type="button" class="btn primary" data-send>Send</button>
+      </div>
+      <menu style="display:flex;justify-content:flex-end;gap:.5rem">
+        <button class="btn" data-close>Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js" defer></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/learn.js"></script>
+</body>
+</html>
