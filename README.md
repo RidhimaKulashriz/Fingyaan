@@ -7,7 +7,7 @@ A multi‑page, mobile‑first HTML + CSS + Vanilla JavaScript project to help s
 - Serve with any static server (recommended for fetch of JSON files):
   - Python: `python -m http.server 8000` then open http://localhost:8000
   - VS Code Live Server or any simple HTTP server
-
+  - https://fingyaan-eco.netlify.app  deployed link
 ## Structure
 - `/index.html` — Landing with hero, features, carousel
 - `/budget.html` — Budget dashboard, LocalStorage, CSV export, pie chart
